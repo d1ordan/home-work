@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+void convert_to_dollar(double* amount, double rate) {
+    *amount /= rate;
+}
+
+void convert_to_grivni(double* amount, double rate) {
+    *amount *= rate;
+}
+
+void convert_to_euro(double* amount, double rate) {
+    *amount /= rate;
+}
+
+int main() {
+    double amount, rate = 30.0, euro_rate = 40.0, usd_to_eur_rate = 0.91;
+    int choice;
+
+    cout << "Select currency to convert from:" << endl;
+    cout << "1. Grivni" << endl;
+    cout << "2. Dollars" << endl;
+    cout << "3. Euros" << endl;
+    cout << "Enter your choice: " << endl;
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << "Enter the amount in grivni: ";
+        cin >> amount;
+
+        convert_to_dollar(&amount, rate);
+
+        cout << "equivalent amount in dollars is " << amount << endl;
+
+        convert_to_euro(&amount, usd_to_eur_rate);
+
+        cout << "equivalent amount in euros is " << amount << endl;
+    }
+    else if (choice == 2) {
+        cout << "Enter the amount in dollars: ";
+        cin >> amount;
+
+        convert_to_grivni(&amount, rate);
+
+        cout << "equivalent amount in grivni is " << amount << endl;
+
+        convert_to_euro(&amount, usd_to_eur_rate);
+
+        cout << "equivalent amount in euros is " << amount << endl;
+    }
+    else if (choice == 3) {
+        cout << "Enter the amount in euros: ";
+        cin >> amount;
+
+        convert_to_dollar(&amount, usd_to_eur_rate);
+
+        cout << "equivalent amount in dollars is " << amount << endl;
+
+        convert_to_grivni(&amount, euro_rate);
+
+        cout << "equivalent amount in grivni is " << amount << endl;
+    }
+
+    return 0;
+}
