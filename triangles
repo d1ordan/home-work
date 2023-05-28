@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+class Triangle{
+protected:
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int h = 0;
+};
+
+class Equal: protected Triangle{
+private:
+    void Calculate_square();
+
+public:
+    void Eqaul_Square();
+};
+
+void Equal::Eqaul_Square() {
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter h: ";
+    cin >> h;
+    Calculate_square();
+}
+
+void Equal::Calculate_square() {
+    cout << "S = " << 0.5*(a/h) << endl;
+}
+
+class Isosceles: protected Triangle{
+private:
+    void cal_sq();
+public:
+    void Eq_sq();
+
+};
+void Isosceles::Eq_sq() {
+    cout << "Enter a";
+    cin >> a;
+    cout << "Enter b";
+    cin >> b;
+    cal_sq();
+}
+
+void Isosceles::cal_sq() {
+cout << "S=" << 1*(a/b) <<endl;
+}
+
+class Versatile: protected Triangle{
+private:
+    void calcute_sq();
+public:
+    void EQ_sq();
+
+};
+void Versatile::EQ_sq() {
+    cout <<"Enter a";
+    cin >> a;
+    cout <<"Enter n";
+    cin >> b;
+    cout <<"Enter c";
+    cin >> c;
+    calcute_sq();
+}
+void Versatile::calcute_sq() {
+    cout << "S=" << (a+b+c)/2 <<endl;
+}
+
+int main(){
+    Equal equal;
+    equal.Eqaul_Square();
+    Isosceles ob;
+    ob.Eq_sq();
+    Versatile ob2;
+    ob2.EQ_sq();
+
+}
