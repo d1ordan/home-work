@@ -1,0 +1,74 @@
+//Car Rental
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+const int max_places = 22;
+
+class renta_car {
+private:
+    int places[max_places];
+
+public:
+    renta_car();
+    void display_free_places();
+    void display_busy_places();
+    void random_fill();
+    void occupy_place(int placeNumber);
+};
+
+renta_car::renta_car() {
+    std::cout << "Next place" << std::endl;
+}
+
+void renta_car::display_free_places() {
+    std::cout << "Free places: ";
+    for (int i = 0; i < max_places; i++) {
+        if (places[i] == 0) {
+            std::cout << i << " ";
+        }
+    }
+    std::cout << std::endl;
+}
+
+void renta_car::display_busy_places() {
+    std::cout << "Busy places: ";
+    for (int i = 0; i < max_places; i++) {
+        if (places[i] == 1) {
+            std::cout << i << " ";
+        }
+    }
+    std::cout << std::endl;
+}
+
+void renta_car::random_fill() {
+    std::srand(std::time(nullptr)); 
+    for (int i = 0; i < max_places; i++) {
+        places[i] = std::rand() % 2;
+    }
+}
+
+void renta_car::occupy_place(int placeNumber) {
+    if (placeNumber >= 0 && placeNumber < max_places) {
+        if (places[placeNumber] == 0) {
+            places[placeNumber] = 1;
+            cout << "Place " << placeNumber << "has been occupied" << endl;
+        }
+        else {
+            cout << "Place " << placeNumber << "is already occupied" << endl;
+        }
+    }
+    else {
+        cout << "Invalid place number" << endl;
+    }
+}
+
+int main() {
+    renta_car car_rental;
+    car_rental.random_fill();
+    car_rental.display_free_places();
+    car_rental.display_busy_places();
+    car_rental.occupy_place(5);
+    return 0;
+}
