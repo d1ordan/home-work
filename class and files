@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class File_1{
+protected:
+	string text;
+	string color_of_text;
+	string size_of_text;
+public:
+	File_1(){
+		cout << "enter the text" << endl;
+		cin >> text;
+		cout << "enter color of the text" << endl;
+		cin >> color_of_text;
+		cout << "enter size of the text " << endl;
+		cin >> size_of_text;
+   }
+};
+class File_2:public File_1 {
+protected:
+	string name_of_file;
+public:
+	File_2() {
+		cout << "enter name of file" << endl;
+		cin >> name_of_file;
+		File_1 f;
+	}
+	void write_to_file() {
+		ofstream new_file("filename.txt");
+		new_file << text,
+	}
+};
+
+int main() {
+	File_2 f1;
+}
